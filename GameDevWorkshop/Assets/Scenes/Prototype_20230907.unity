@@ -378,6 +378,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42d5f098cc0b2a04193eb06d75f54bb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2.5
+  gravity: -10
+  jumpForce: 2
+  cameraLive: {fileID: 0}
+  sensitivity: 25
 --- !u!114 &647302842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,7 +396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: e7759e3490efd2e4fabd2c632882c98e, type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -402,10 +407,58 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 647302841}
+        m_TargetAssemblyTypeName: FirstPersonController, Assembly-CSharp
+        m_MethodName: onMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: be606339-1deb-4952-9deb-6988d2d82060
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 647302841}
+        m_TargetAssemblyTypeName: FirstPersonController, Assembly-CSharp
+        m_MethodName: onLook
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f4b5cb2a-97da-4ce6-abf9-40a8aad22446
+    m_ActionName: Player/Look[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 647302841}
+        m_TargetAssemblyTypeName: FirstPersonController, Assembly-CSharp
+        m_MethodName: onJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 92387a5a-4f47-458a-ba23-d824a0fa3c6d
+    m_ActionName: Player/Jump[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: 
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 666872965}
 --- !u!1 &666872963
