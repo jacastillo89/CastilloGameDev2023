@@ -56,7 +56,7 @@ public class FirstPersonController : MonoBehaviour
         //Direction Move
         Vector3 moveVec = transform.right * moveInput.x + transform.forward * moveInput.y;
         //Move character controller
-        characterController.Move(moveVec * Time.deltaTime);
+        characterController.Move(moveVec * speed * Time.deltaTime);
         //Add Graviti
         playerVelocity.y += gravity * Time.deltaTime;
         if (grounded && playerVelocity.y < 0)
@@ -71,13 +71,17 @@ public class FirstPersonController : MonoBehaviour
 
     public void Look()
     {
-        float xAmoutn = mouseMovement.x * sensitivity * Time.deltaTime;
-        float yAmoutn = mouseMovement.y * sensitivity * Time.deltaTime;
+        float xAmount = mouseMovement.y * sensitivity * Time.deltaTime;
+        float yAmount = mouseMovement.x * sensitivity * Time.deltaTime;
 
-        transform.Rotate(Vector3.up * mouseMovement * sensitivity * Time.deltaTime);
+        transform.Rotate(Vector3.up * mouseMovement.x * sensitivity * Time.deltaTime);
 
-        camXRotation -= xAmoutn;
+        camXRotation -= xAmount;
         camXRotation = Mathf.Clamp(camXRotation, -90f, 90f);
+
+        //Sets canera's location rotation.Player will be able look up and down
+
+        cameraLive.transform.localRotation = Quaternion.Euler(camXRotation, 0, 0);
     }
 
     public void onMove(InputAction.CallbackContext contex)
