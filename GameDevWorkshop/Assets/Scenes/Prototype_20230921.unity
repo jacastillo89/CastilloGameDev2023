@@ -610,10 +610,11 @@ MonoBehaviour:
   camera: {fileID: 710566318}
   rigidbody: {fileID: 213182510}
   player: {fileID: 213182509}
-  playe_model: {fileID: 1969569368}
+  player_model: {fileID: 1969569368}
   orientation: {fileID: 1643039107}
   move_force: 30
   rotation_speed: 10
+  jumpforce: 500
 --- !u!143 &213182513
 CharacterController:
   m_ObjectHideFlags: 0
@@ -718,7 +719,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465761229}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2669336, y: -3.4238033e-15, z: 1.836517e-15, w: 0.96371496}
+  m_LocalRotation: {x: 0.26693356, y: -0.000000028720944, z: 0.00000000795524, w: 0.96371496}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

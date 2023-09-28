@@ -21,11 +21,17 @@ public class ThirdPersonController : MonoBehaviour
     //Player variable
     public Rigidbody rigidbody;
     public Transform player;
-    public Transform playe_model;
+    public Transform player_model;
     public Transform orientation;
     public float move_force; //forece appliede to plater
     public float rotation_speed; //how fast we rotate
+    public float jumpforce = 500.0f;
     private Vector3 direction;
+
+    //Ray cast variable
+    private float ray_lenght = 500;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -38,17 +44,24 @@ public class ThirdPersonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
-
+        RotatePlayerModel();
+        Debug.DrawRay(transform.position, Vector3.down * ray_lenght, Color.blue);
+    }
+    private void FixedUpdate()
+    {
+        MovePlayer();
     }
     public void GetMovementInput(InputAction.CallbackContext context)
     {
         move_input = context.ReadValue<Vector2>();
-
+        Debug.Log(move_input);
     }
     public void GetJumpInput(InputAction.CallbackContext context)
     {
-      
+      if(context.phase == InputActionPhase.Started)
+        {
+            Jump();
+        }
     }
     public void RotatePlayerModel()
     {
@@ -62,6 +75,35 @@ public class ThirdPersonController : MonoBehaviour
         direction = orientation.right * move_input.x + orientation.forward * move_input.y;
         direction = direction.normalized;
 
-        //Pick up at this point
+        //keynoard Input
+
+        if (move_input != Vector2.zero)
+        {
+            //this creates a new rotation that we want the plater_model to look at
+            Quaternion new_rotation = Quaternion.LookRotation(direction, Vector3.up);
+
+            //Calculate rotation, now we want the player+model to move towards the rotation
+            player_model.rotation = Quaternion.Slerp(player_model.rotation,new_rotation, rotation_speed * Time.deltaTime);
+       }
+
     }
+    public void MovePlayer()
+    {
+
+        rigidbody.AddForce(direction * move_force, ForceMode.Force);
+    }
+    public void Jump()
+    {
+        if (IsOnGround())
+        {
+            rigidbody.AddForce(Vector3.up * jumpforce);
+        }
+    }
+
+    bool IsOnGround()
+    {
+        Ray ray = new Ray(transform.position, Vector3.down);
+        return Physics.Raycast(ray, ray_lenght);
+    }
+
 }
