@@ -9,11 +9,14 @@ public class Asteroid : MonoBehaviour
     public float life;
     public float move_speed;
     private Rigidbody rb;
+    [HideInInspector] public GameObject spawner;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
+        Vector3 dir = (Vector3.zero - transform.position).normalized;
+        rb.AddForce (dir* move_speed, ForceMode.Impulse);
     }
 
     // Update is called once per frame
@@ -31,6 +34,8 @@ public class Asteroid : MonoBehaviour
             if (life <= 0)
             {
                 Destroy(gameObject);
+                spawner.GetComponent<Spawner>().asteroids_count--;
+                spawner.GetComponent<Spawner>().CheckAsteridCount();
             }
 
         }

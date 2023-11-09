@@ -608,6 +608,52 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 813679197}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &866179200
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 866179201}
+  - component: {fileID: 866179202}
+  m_Layer: 0
+  m_Name: Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &866179201
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866179200}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &866179202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866179200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49ff8251f43795045a6ff1adc20066cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asteroid_prefab: {fileID: 4576206854748237660, guid: 0dd3ee490c6e52a4aa3b736c7624abb0, type: 3}
+  camera: {fileID: 963194227}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1407,7 +1453,7 @@ Transform:
   m_GameObject: {fileID: 2047744023}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1460,13 +1506,12 @@ MonoBehaviour:
   rotate_speed: 350
   camera: {fileID: 963194227}
   bullet_prefab: {fileID: 585648225564655525, guid: 745f4b164e9da1945a9094d213cf53d4, type: 3}
-  shoot_point: {fileID: 1856162887}
+  shoot_points:
+  - {fileID: 1856162887}
+  - {fileID: 512400964}
+  - {fileID: 413488837}
   rate_of_fire: 0.15
   shoot_timer: 1.69
-  test_cube1: {fileID: 1998006596}
-  test_cube2: {fileID: 593940072}
-  test_cube3: {fileID: 1528967653}
-  test_cube4: {fileID: 308070851}
 --- !u!114 &2047744027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1528,7 +1573,7 @@ MonoBehaviour:
   m_DefaultControlScheme: 
   m_DefaultActionMap: ShipControls
   m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 963194227}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1541,3 +1586,4 @@ SceneRoots:
   - {fileID: 593940076}
   - {fileID: 1528967657}
   - {fileID: 308070855}
+  - {fileID: 866179201}
